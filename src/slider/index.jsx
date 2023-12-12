@@ -168,6 +168,23 @@ export default function CircularSlider(props) {
           <stop offset="0%" style={{ stopColor: 'rgb(120, 163, 247)' }} />
           <stop offset="100%" style={{ stopColor: 'rgb(18, 92, 244)' }} />
         </linearGradient>
+
+        <linearGradient id="gradient-dis" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%" style={{ stopColor: 'rgb(143, 146, 154)' }} />
+          <stop offset="100%" style={{ stopColor: 'rgb(102, 102, 102)' }} />
+        </linearGradient>
+
+        <filter id="handleShadow" x="-50%" y="-50%" width="16" height="16">
+          <feOffset result="offOut" in="SourceGraphic" dx="0" dy="0" />
+          <feColorMatrix
+            result="matrixOut"
+            in="offOut"
+            type="matrix"
+            values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0"
+          />
+          <feGaussianBlur result="blurOut" in="matrixOut" stdDeviation="5" />
+          <feBlend in="SourceGraphic" in2="blurOut" mode="normal" />
+        </filter>
       </defs>
       <path
         d={arcShapedPath({
@@ -193,21 +210,9 @@ export default function CircularSlider(props) {
           svgSize: svgSize,
           direction: angleType.direction,
         })}
-        stroke={disabled ? 'rgb(143, 146, 154)' : 'url(#gradient)'}
+        stroke={`url(#${disabled ? 'gradient-dis' : 'gradient'})`}
         className="CircularSlider-fill"
       />
-
-      <filter id="handleShadow" x="-50%" y="-50%" width="16" height="16">
-        <feOffset result="offOut" in="SourceGraphic" dx="0" dy="0" />
-        <feColorMatrix
-          result="matrixOut"
-          in="offOut"
-          type="matrix"
-          values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0"
-        />
-        <feGaussianBlur result="blurOut" in="matrixOut" stdDeviation="5" />
-        <feBlend in="SourceGraphic" in2="blurOut" mode="normal" />
-      </filter>
 
       <circle
         r={handleRadius}
