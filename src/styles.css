@@ -1,0 +1,64 @@
+body {
+  background-color: #f5f5f5;
+}
+
+.App {
+  font-family: sans-serif;
+  text-align: center;
+}
+
+.MobileSlider {
+  position: relative;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.MobileSlider--dragging {
+  user-select: none;
+}
+
+.MobileSlider-value {
+  position: absolute;
+  top: 80px;
+  left: calc(50% - 50px);
+  width: 100px;
+  text-align: center;
+  color: #1980d0;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.MobileSlider-valueNote {
+  font-weight: normal;
+  font-size: 14px;
+}
+
+.MobileSlider-label {
+  position: absolute;
+  z-index: -1;
+  color: rgb(153, 153, 153);
+  font-size: 12px;
+  top: 190px;
+}
+.MobileSlider-label.min {
+  right: calc(50% + 60px);
+}
+
+.MobileSlider-label.max {
+  left: calc(50% + 60px);
+}
+
+.CircularSlider {
+  -webkit-overflow-scrolling: touch;
+  touch-action: none;
+}
+
+.CircularSlider-track,
+.CircularSlider-fill {
+  stroke-width: 12px;
+  stroke-linecap: round;
+  fill: none;
+}
+
+.CircularSlider-handle {
+  touch-action: pan-x pan-y;
+}
